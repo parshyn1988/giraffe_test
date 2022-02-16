@@ -51,15 +51,14 @@ export default {
   },
   computed: {
     sortedProducts() {
+      const sortProducts = this.products;
       if (this.sortSelected === 'price') {
-        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        return this.products.sort((a, b) => {
+        return sortProducts.sort((a, b) => {
           return a.price - b.price;
         });
       }
       if (this.sortSelected === 'count') {
-        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        return this.products.sort((a, b) => {
+        return sortProducts.sort((a, b) => {
           return a.count - b.count;
         });
       }
