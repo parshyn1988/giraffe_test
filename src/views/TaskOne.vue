@@ -2,7 +2,7 @@
   <div class="products">
     <h1>Task 1</h1>
     <hr />
-    <div class="products-sort">
+    <div v-if="products" class="products-sort">
       <span>Sort</span>
       <select
           v-model="sortSelected"
@@ -21,13 +21,13 @@
     </div>
     <ul class="products-list">
       <li
-          v-for="(item, index) in sortedProducts"
+          v-for="(product, index) in sortedProducts"
           :key="index"
           class="products-list__item"
       >
-        <h5>{{ item.title }}</h5>
-        <span>price: {{ item.price }}</span>
-        <span>count: {{ item.count }}</span>
+        <h5>{{ product.title }}</h5>
+        <span>price: {{ product.price }}</span>
+        <span>count: {{ product.count }}</span>
       </li>
     </ul>
   </div>
@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     sortedProducts() {
-      const sortProducts = this.products;
+      const sortProducts = this.products ? [...this.products] : [];
       if (this.sortSelected === 'price') {
         return sortProducts.sort((a, b) => {
           return a.price - b.price;

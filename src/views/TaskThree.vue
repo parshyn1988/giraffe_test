@@ -4,12 +4,12 @@
     <hr>
     <ul v-if="posts" class="posts-list">
       <li
-          v-for="(item, index) in posts"
+          v-for="(post, index) in posts"
           :key="index"
           class="posts-list__item"
       >
-        <h5>{{ item.title }}</h5>
-        <p>{{ item.body }}</p>
+        <h5>{{ post.title }}</h5>
+        <p>{{ post.body }}</p>
       </li>
     </ul>
     <div v-if="handleError" class="posts-error">
@@ -60,7 +60,6 @@ export default {
         console.error(error);
       }
     },
-
     checkResponse(res) {
       if (!res.ok) {
         this.handleError = CUSTOM_ERROR;
